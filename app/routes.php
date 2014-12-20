@@ -11,6 +11,10 @@
 |
 */
 
+#Final Route
+
+Route::resource('item', 'ItemController');
+
 
 Route::get('/', function()
 {
@@ -86,14 +90,6 @@ Route::post('/login',
     )
 );
 
-Route::get('/login-test', 
-    array(
-        'before' => 'auth', 
-        function() {
-            echo 'Congratz !';
-        }
-    )
-);
 
 # LOG OUT
 Route::get('/logout', function() {
@@ -149,5 +145,27 @@ Route::get('/debug', function() {
     }
 
     echo '</pre>';
+
+});
+
+
+Route::get('/login-test', 
+    array(
+        'before' => 'auth', 
+        function() {
+            echo 'Congratz !';
+        }
+    )
+);
+
+Route::get('/test', function(){
+ 
+    $books = DB::table('users')->where('first_name','LIKE','%Y%')->get();
+
+    foreach ($books as $book) {
+        echo $book->email.'<br>';
+    }
+
+
 
 });
