@@ -1,4 +1,4 @@
-#P3: Laravel Basics
+#P4: Final Project - Pantry Tracker
 
 ## Live URL
 <http://p4.yvesyuen.me>
