@@ -16,91 +16,14 @@
 Route::resource('item', 'ItemController');
 
 
-Route::get('/', function()
-{
-	return View::make('index');
-});
+Route::get('/', 'ListController@getIndex');
+Route::get('/signup', 'UserController@getSignup');
+Route::post('/signup', 'UserController@postSignup');
+Route::post('/login', 'UserController@postLogin');
+Route::get('/login', 'UserController@getLogin');
+Route::get('/logout', 'UserController@getLogout');
 
 
-# GET Sign Up Route 
-Route::get('/signup',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('signup');
-        }
-    )
-);
-
-# POST Sign Up Route 
-Route::post('/signup', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $user = new User;
-            $user->email    = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
-
-            # Try to add the user 
-            try {
-                $user->save();
-            }
-            # Fail
-            catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-            }
-
-            # Log the user in
-            Auth::login($user);
-
-            return Redirect::to('/login')->with('flash_message', 'Welcome to Foobooks!');
-
-        }
-    )
-);
-
-# GET Login
-Route::get('/login',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('login');
-        }
-    )
-);
-
-# POST Login
-Route::post('/login', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $credentials = Input::only('email', 'password');
-
-            if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
-            }
-            else {
-                return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
-            }
-
-            return Redirect::to('login');
-        }
-    )
-);
-
-
-# LOG OUT
-Route::get('/logout', function() {
-
-    # Log out
-    Auth::logout();
-
-    # Send them to the homepage
-    return Redirect::to('/');
-
-});
 
 # Practice debug route
 Route::get('/debug', function() {
@@ -149,7 +72,7 @@ Route::get('/debug', function() {
 });
 
 
-Route::get('/login-test', 
+Route::get('/testconnection', 
     array(
         'before' => 'auth', 
         function() {
@@ -159,14 +82,21 @@ Route::get('/login-test',
 );
 
 Route::get('/test', function(){
- 
-    $items = Item::where('default','=',TRUE)->get();
 
+    $list = PantryList::where('user_id','=',Auth::id())->first();
+
+    echo $list.'<br>'; 
+    echo $list->id.'<br>'; 
+    // $items = ListContent::Where('pantry_list_id','=',1);
+    $items = ListContent::Where('pantry_list_id','=',$list->id)->get();
+//$list->id
     foreach ($items as $item) {
-        echo $item->name.'<br>';
+         echo $item->item_id.'<br>';
     }
 
     $itemCount = Item::where('default','=',TRUE)->count();
     echo $itemCount;
+
+
 
 });

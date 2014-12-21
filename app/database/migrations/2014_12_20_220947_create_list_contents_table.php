@@ -20,7 +20,7 @@ class CreateListContentsTable extends Migration {
 		    $table->foreign('item_id')->references('id')->on('items'); 
 		    $table->integer('position')->unsigned(); 
 		    $table->boolean('active')->default(1); 
-		    $table->integer('amount')->unsigned(); 	
+		    $table->integer('amount')->default(0)->unsigned(); 	
 		    $table->primary(array('pantry_list_id','item_id','position'))->unique();	    
 		    $table->timestamps();
 		});
