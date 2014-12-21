@@ -24,4 +24,4 @@ Route::post('/login', 'UserController@postLogin');
 Route::get('/login', 'UserController@getLogin');
 Route::get('/logout', 'UserController@getLogout');
 
-});
+
