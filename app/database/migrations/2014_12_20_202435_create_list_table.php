@@ -12,7 +12,7 @@ class CreateListTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pantry_Lists', function($table) {
+		Schema::create('pantry_lists', function($table) {
 
 		    $table->increments('id');
 		    $table->string('name');
@@ -29,7 +29,7 @@ class CreateListTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pantry_Lists');
+		Schema::drop('pantry_lists');
 	}
 
 }
