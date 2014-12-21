@@ -21,7 +21,7 @@ class PantryList extends Eloquent {
 
 	       	foreach($items as $item){
 
-	       		$content = new listContent; 
+	       		$content = new ListContent; 
 	       		$content->pantryList()->associate($pantryList);
 	 			$content->item()->associate($item);
 	 			//$content->position = $item->id;
