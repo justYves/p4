@@ -2,19 +2,20 @@
  
 class UserTableSeeder extends Seeder {
  
-  public function run()
-  {
-		$user = User::create(array(
-		  'email' => 'yves@test.com',
-		  'password' => Hash::make('testp4'),
-		  'username' => 'admin',
-		  'first_name' => 'Yves',
-		  'last_name' => 'Yuen'
-		));
+ 	public function run()
+  	{
+		$user = new User;
+		$user->email = 'yves@test.com';
+		$user->password = Hash::make('testp4');
+		$user->username = 'admin';
+		$user->first_name = 'Yves';
+		$user->last_name = 'Yuen';
+		$user->save();
+
 
 		$faker = Faker\Factory::create();
  
-		for ($i = 0; $i < 20; $i++)
+		for ($i = 0; $i < 2; $i++)
 		{
 		   $user = new User;
 		   $user->email = $faker->email;
@@ -23,7 +24,7 @@ class UserTableSeeder extends Seeder {
 		   $user->first_name = $faker->firstName;
 		   $user->last_name = $faker->lastName;
 		   $user->save();
-		  
-		}
-  }
+
+  		}
+  	}
 }

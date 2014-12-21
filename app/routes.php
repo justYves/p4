@@ -160,12 +160,13 @@ Route::get('/login-test',
 
 Route::get('/test', function(){
  
-    $books = DB::table('users')->where('first_name','LIKE','%Y%')->get();
+    $items = Item::where('default','=',TRUE)->get();
 
-    foreach ($books as $book) {
-        echo $book->email.'<br>';
+    foreach ($items as $item) {
+        echo $item->name.'<br>';
     }
 
-
+    $itemCount = Item::where('default','=',TRUE)->count();
+    echo $itemCount;
 
 });

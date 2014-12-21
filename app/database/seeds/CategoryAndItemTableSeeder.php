@@ -181,6 +181,7 @@ class CategoryAndItemTableSeeder extends Seeder {
     foreach ($keys as $key=>$category){
       $item = new Item;
       $item->name= $key;
+      $item->default=TRUE;
       $item->category()->associate($category);
       $item->save();
 

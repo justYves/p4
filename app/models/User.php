@@ -23,9 +23,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-    public function list() {
-    # Category has many Items
-    # Define a one-to-many relationship.
-    return $this->hasMany('List');
+	public function pantryList() {
+
+    	return $this->hasMany('PantryList');
+    }
+
+    public static function boot() {
+    	user::created(function($user)
+    	{
+    		$list = new pantryList; 
+			$list->name = $user->first_name."'s List";
+			$list->user()->associate($user);
+			$list->save();
+    	});
     }
 }
