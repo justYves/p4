@@ -8,7 +8,7 @@ This is the final Project for CSCIE-15. The application is a pantry food tracker
 
 
 ## Demo
-To come
+http://screencast.com/t/XGvqgloIqfGF
 
 ## Details for teaching team
 Here at the testing credentials: 
