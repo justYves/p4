@@ -6,7 +6,7 @@
 
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
+  {{ HTML::style('css/custom.css')}}
 
 	<title>@yield('title','P4')</title>
 
@@ -59,7 +59,7 @@
       @yield('content')
 
       @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+        <div class='flash-message'>{{ Session::get('flash_message') }}</div> <br>
       @endif
       
 			@yield('body')

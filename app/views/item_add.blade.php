@@ -18,6 +18,7 @@
 </h1> <br>
  
 @stop
+
 @section('body')
 
 	{{ Form::open(array('url' => '/item/store')) }}

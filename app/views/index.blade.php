@@ -11,7 +11,13 @@
 
 @section('content')
 
-<h1> Welcome to P4!</h1> <br>
+
+
+    @if(Auth::check())
+    @else
+    	<h1> Welcome to Pantry Tracker!</h1> <br>
+		<h3>This application will help you keep track of all the food you have sitting in your pantry. Hope this will come handy next time you go grocery shopping!</h3>
+	@endif
 
 @stop
 @section('body')

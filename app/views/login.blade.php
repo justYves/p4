@@ -1,4 +1,4 @@
-<!-- /app/views/login.blade.php -->
+
 @extends('_master')
 
 @section('title')

@@ -1,5 +1,4 @@
 
-<!-- /app/views/signup.blade.php -->
 @extends('_master')
 
 @section('title')
@@ -17,13 +16,12 @@
 @stop
 @section('body')
 
-@if(isset($errors))
-	<div class="alert alert-dismissable alert-warning"> <button type="button" class="close" data-dismiss="alert">×</button>
+
 	@foreach($errors->all() as $message)
 		{{ $message }} <br>
 	@endforeach
-	</div>
-@endif
+
+
 
 	{{ Form::open(array('url' => '/signup')) }}
 
