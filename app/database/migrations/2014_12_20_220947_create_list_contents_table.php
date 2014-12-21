@@ -15,7 +15,7 @@ class CreateListContentsTable extends Migration {
 		Schema::create('list_contents', function($table) {
 
 		    $table->integer('pantry_list_id')->unsigned(); 
-		    $table->foreign('pantry_list_id')->references('id')->on('pantry_Lists'); 
+		    $table->foreign('pantry_list_id')->references('id')->on('pantry_lists'); 
 		    $table->integer('item_id')->unsigned(); 
 		    $table->foreign('item_id')->references('id')->on('items'); 
 		    $table->increments('id');
