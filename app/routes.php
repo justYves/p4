@@ -13,10 +13,14 @@
 
 #Final Route
 
-Route::resource('item', 'ItemController');
-
 
 Route::get('/', 'ListController@getIndex');
+Route::get('/item/delete', 'ItemController@getDelete');
+Route::post('/item/delete', 'ItemController@postDelete');
+Route::post('/item/store', 'ItemController@store');
+Route::get('/item/create/{id}', 'ItemController@getCreate');
+Route::get('/item/edit/{id}', 'ItemController@getEdit');
+Route::post('/item/edit', 'ItemController@postEdit');
 Route::get('/signup', 'UserController@getSignup');
 Route::post('/signup', 'UserController@postSignup');
 Route::post('/login', 'UserController@postLogin');
@@ -83,20 +87,20 @@ Route::get('/testconnection',
 
 Route::get('/test', function(){
 
-    $list = PantryList::where('user_id','=',Auth::id())->first();
+//     $list = PantryList::where('user_id','=',Auth::id())->first();
 
-    echo $list.'<br>'; 
-    echo $list->id.'<br>'; 
-    // $items = ListContent::Where('pantry_list_id','=',1);
-    $items = ListContent::Where('pantry_list_id','=',$list->id)->get();
-//$list->id
-    foreach ($items as $item) {
-         echo $item->item_id.'<br>';
-    }
+//     echo $list.'<br>'; 
+//     echo $list->id.'<br>'; 
+//     // $items = ListContent::Where('pantry_list_id','=',1);
+//     $items = ListContent::Where('pantry_list_id','=',$list->id)->get();
+// //$list->id
+//     foreach ($items as $item) {
+//          echo $item->item_id.'<br>';
+//     }
 
-    $itemCount = Item::where('default','=',TRUE)->count();
-    echo $itemCount;
+//     $itemCount = Item::where('default','=',TRUE)->count();
+//     echo $itemCount;
 
-
+        return View::make('item_edit');
 
 });

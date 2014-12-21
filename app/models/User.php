@@ -31,7 +31,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public static function boot() {
     	user::created(function($user)
     	{
-    		$list = new pantryList; 
+    		$list = new PantryList; 
 			$list->name = $user->first_name."'s List";
 			$list->user()->associate($user);
 			$list->save();

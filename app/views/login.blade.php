@@ -13,6 +13,9 @@
 
 <h1> Log in </h1> <br>
  
+@stop
+@section('body')
+ 
 	{{ Form::open(array('url' => '/login')) }}
 
 	    Email<br>

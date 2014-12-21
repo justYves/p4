@@ -11,7 +11,9 @@ This is the final Project for CSCIE-15. The application is a pantry food tracker
 To come
 
 ## Details for teaching team
-
+Here at the testing credentials: 
+- login : admin@php.com
+- password: password
 
 ## Outside code/Source
 - Bootstrap: http://getbootstrap.com/

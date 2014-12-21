@@ -24,7 +24,7 @@ class PantryList extends Eloquent {
 	       		$content = new listContent; 
 	       		$content->pantryList()->associate($pantryList);
 	 			$content->item()->associate($item);
-	 			$content->position = $item->id;
+	 			//$content->position = $item->id;
 	 			$content->amount = 0;
 				$content->save();      		
 	       	} 

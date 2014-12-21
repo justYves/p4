@@ -15,6 +15,7 @@ class ListController extends \BaseController {
 
     		$items = ListContent::with('item.category')
     			->Where('pantry_list_id','=',$list->id)
+    			->orderBy('item_id')
     			->get();
 
     		$categories = Category::All();
@@ -26,8 +27,6 @@ class ListController extends \BaseController {
 		}else {
 			return View::make('index');
 		}
-
-
 
 
 	}   

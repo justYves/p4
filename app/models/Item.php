@@ -13,6 +13,10 @@ class Item extends Eloquent {
     	return $this->hasMany('ListContent');
 
     }
+    public  function delete() {
+    	$this->ListContent()->delete();
+    	return parent::delete();
+	}
 }
 
 

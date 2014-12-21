@@ -5,11 +5,11 @@ class UserTableSeeder extends Seeder {
  	public function run()
   	{
 		$user = new User;
-		$user->email = 'yves@test.com';
-		$user->password = Hash::make('testp4');
+		$user->email = 'admin@php.com';
+		$user->password = Hash::make('password');
 		$user->username = 'admin';
-		$user->first_name = 'Yves';
-		$user->last_name = 'Yuen';
+		$user->first_name = 'admin';
+		$user->last_name = 'admin';
 		$user->save();
 
 
